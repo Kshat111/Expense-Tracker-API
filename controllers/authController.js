@@ -1,4 +1,4 @@
-const { db } = require("../config/firestore.js");
+const { db }= require("./config/firestore");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { collection, addDoc, getDocs, query, where } = require("firebase/firestore");

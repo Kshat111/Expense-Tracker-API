@@ -5,11 +5,11 @@ const {
   updateExpense,
   deleteExpense,
 } = require('../controllers/expenseController');
-const authMiddleware = require('../middlewares/authMiddleware');
+const { authenticateToken } = require('../middlewares/auth'); // Fix: Correct import path
 const router = express.Router();
 
 // Apply auth middleware to all routes
-router.use(authMiddleware);
+router.use(authenticateToken);
 
 // GET /api/expenses - List all expenses with optional filters
 router.get('/', getExpenses);

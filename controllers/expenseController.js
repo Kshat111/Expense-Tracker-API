@@ -2,7 +2,7 @@ const { db } = require("./config/firestore.js");
 const { collection, addDoc, updateDoc, deleteDoc, doc, query, where, getDocs } = require("firebase/firestore");
 
 // Add a new expense
-export const addExpense = async (req, res) => {
+const addExpense = async (req, res) => {
     try {
         const { category, amount, date } = req.body;
 
@@ -22,7 +22,7 @@ export const addExpense = async (req, res) => {
 };
 
 // Get expenses with filters
-export const getExpenses = async (req, res) => {
+const getExpenses = async (req, res) => {
     try {
         const { filter, startDate, endDate } = req.query;
         const expensesRef = collection(db, "expenses");
@@ -62,7 +62,7 @@ export const getExpenses = async (req, res) => {
 };
 
 // Update an existing expense
-export const updateExpense = async (req, res) => {
+const updateExpense = async (req, res) => {
     try {
         const { id } = req.params;
         const { category, amount, date } = req.body;
@@ -83,7 +83,7 @@ export const updateExpense = async (req, res) => {
 };
 
 // Delete an expense
-export const deleteExpense = async (req, res) => {
+const deleteExpense = async (req, res) => {
     try {
         const { id } = req.params;
 
@@ -97,3 +97,5 @@ export const deleteExpense = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
+
+module.exports = { addExpense, getExpenses, updateExpense, deleteExpense }; // Fix: Use module.exports

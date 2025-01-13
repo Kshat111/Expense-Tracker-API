@@ -3,7 +3,7 @@ const { getFirestore, doc, setDoc, getDoc } = require('firebase/firestore');
 const db = getFirestore();
 
 const createUser = async (userData) => {
-  await setDoc(doc(db, 'users', userData.uid), userData);
+  await setDoc(doc(db, 'users', userData.email), userData); // Fix: Use email instead of UID as document ID
 };
 
 const getUserByEmail = async (email) => {
